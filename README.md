@@ -4,4 +4,4 @@ This is a simple web interface for [tpmstream](https://github.com/joholl/tpmstre
 
 ## Deployment
 
-tpmstream-web is hosted at  [joholl.github.io/tpmstream-web/](https://joholl.github.io/tpmstream-web/).
+tpmstream-web is hosted at  [joholl.github.io/tpmstream-web](https://joholl.github.io/tpmstream-web/).
