@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>tpmstream</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="input-area">
+            <textarea id="in" placeholder="Enter hexadecimal..." py-input="convert()"></textarea>
+        </div>
+        <div class="output-area">
+            <div id="out">
+            </div>
+        </div>
+    </div>
+
+    <py-config>
+        packages = ["tpmstream"]
+    </py-config>
+    <py-script src="./main.py"></py-script>
+</body>
+</html>
