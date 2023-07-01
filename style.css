@@ -13,6 +13,8 @@ body {
 .container-fluid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+    grid-template-rows: 3em auto;
+    height: 100%;
     column-gap: 1.5vh;
     row-gap: 1.5vh;
     padding: 1.5vh;
@@ -44,7 +46,6 @@ body {
 #out {
     font-family: monospace;
     width: 100%;
-    height: 95vh;
     border: 1px solid #ccc;
     padding: 2vh;
     box-sizing: border-box;
