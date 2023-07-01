@@ -6,11 +6,16 @@ body {
     overflow: hidden;
 }
 
-.container {
+#tpm-type {
+    grid-column: 1 / 3;
+}
+
+.container-fluid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
-    column-gap: 2.5vh;
-    padding: 2.5vh;
+    column-gap: 1.5vh;
+    row-gap: 1.5vh;
+    padding: 1.5vh;
     box-sizing: border-box;
 }
 

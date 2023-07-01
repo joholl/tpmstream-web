@@ -2,25 +2,29 @@
 <head>
     <title>tpmstream</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-    <div class="container">
+    <py-config>
+        packages = ["tpmstream"]
+    </py-config>
+    <py-script src="./main.py"></py-script>
+
+    <div class="container-fluid">
+        <select id="tpm-type" placeholder="Detect..." py-change="on_select()" class="form-select" aria-label="Default select example">
+            <option value="">Detect...</option>
+        </select>
         <div class="input-area">
-            <textarea id="in" placeholder="Enter hexadecimal..." py-input="convert()"></textarea>
+            <textarea id="in" placeholder="Enter hexadecimal..." py-input="on_input()"></textarea>
         </div>
         <div class="output-area">
             <div id="out">
             </div>
         </div>
     </div>
-
-    <py-config>
-        packages = ["tpmstream"]
-    </py-config>
-    <py-script src="./main.py"></py-script>
 </body>
 </html>
