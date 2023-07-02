@@ -12,7 +12,7 @@ If using [tpm2-tss](https://github.com/tpm2-software/tpm2-tss)/[tpm2-tools](http
 Just copy-paste contents of `tpm2_log.pcap` as a hex string!
 
 ```bash
-tpm2_getrandom -Tpcap:device:/dev/tpmrm0 ---hex 10
+tpm2_getrandom --tcti=pcap:device:/dev/tpmrm0 --hex 10
 xxd -p -c0 tpm2_log.pcap
 # copy-paste the output to the web page
 ```
