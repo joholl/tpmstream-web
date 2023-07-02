@@ -53,9 +53,11 @@ async def on_input_catch_all(*args):
 
 
 async def on_input_unwrapped(*args):
-    canonical_objs = list(parse_all_types(Hex, input.value.encode()))
+    input_value = bytes.fromhex(input.value)
+    canonical_objs = list(parse_all_types(Auto, input_value))
 
     tpm_types.innerHTML = ""
+
     for canonical_obj, command_code in canonical_objs:
         option = document.createElement("option")
         value = type_to_str(type(canonical_obj.object), command_code=command_code)
@@ -63,20 +65,24 @@ async def on_input_unwrapped(*args):
         option.value = value
         tpm_types.add(option, None)
 
-    if not canonical_objs:
-        raise ValueError("Cannot match any TPM type.")
+    # always have CommandResponseStream
+    option = document.createElement("option")
+    value = type_to_str(CommandResponseStream, command_code=None)
+    option.text = value
+    option.value = value
+    tpm_types.add(option, None)
 
-    canonical_obj, command_code = canonical_objs[0]
-    tpm_types.value = type_to_str(type(canonical_obj.object), command_code=command_code)
+    tpm_types.selectedIndex = 0
     on_select()
 
 
 def on_select():
+    input_value = bytes.fromhex(input.value)
     tpm_type, command_code = str_to_type(tpm_types.value)
 
-    events = Hex.marshal(
+    events = Auto.marshal(
         tpm_type=tpm_type,
-        buffer=input.value.encode(),
+        buffer=input_value,
         command_code=command_code,
         abort_on_error=False,
     )
