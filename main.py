@@ -35,21 +35,27 @@ def str_to_type(s):
 
 
 def on_input(*args):
+    document.body.classList.add("wait")
+    input.classList.add("wait")
+    tpm_types.classList.add("wait")
+
     asyncio.create_task(on_input_catch_all(args))
 
 
 async def on_input_catch_all(*args):
     input.classList.remove("invalid")
 
-    if not input.value:
-        return
+    if input.value:
+        try:
+            await on_input_unwrapped(*args)
+        except Exception as e:
+            input.classList.add("invalid")
+            output.innerHTML = f'<span class="color-warning">{str(e)}</span>'
+            output.innerHTML += f'{__import__("traceback").format_exc()}'
 
-    try:
-        await on_input_unwrapped(*args)
-    except Exception as e:
-        input.classList.add("invalid")
-        output.innerHTML = f'<span class="color-warning">{str(e)}</span>'
-        return
+    document.body.classList.remove("wait")
+    input.classList.remove("wait")
+    tpm_types.classList.remove("wait")
 
 
 async def on_input_unwrapped(*args):

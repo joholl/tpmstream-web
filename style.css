@@ -5,6 +5,9 @@ body {
     padding: 0;
     overflow: hidden;
 }
+.wait {
+    cursor: wait;
+}
 
 #tpm-type {
     grid-column: 1 / 3;
