@@ -51,7 +51,6 @@ async def on_input_catch_all(*args):
         except Exception as e:
             input.classList.add("invalid")
             output.innerHTML = f'<span class="color-warning">{str(e)}</span>'
-            output.innerHTML += f'{__import__("traceback").format_exc()}'
 
     document.body.classList.remove("wait")
     input.classList.remove("wait")
