@@ -1,7 +1,7 @@
 import asyncio
 import re
 
-from js import document
+from pyscript import document
 from tpmstream.__main__ import parse_all_types
 from tpmstream.io.auto import Auto
 from tpmstream.io.hex import Hex
@@ -10,9 +10,9 @@ from tpmstream.spec import all_types
 from tpmstream.spec.commands import CommandResponseStream, Response
 from tpmstream.spec.structures.constants import TPM_CC
 
-input = Element("in").element
-output = Element("out").element
-tpm_types = Element("tpm-type").element
+input = document.querySelector("#in")
+output = document.querySelector("#out")
+tpm_types = document.querySelector("#tpm-type")
 
 
 def type_to_str(tpm_type, command_code=None):
@@ -110,3 +110,6 @@ def on_select():
             )
             line = re.sub(r"\[0m", "", line)
             output.innerHTML += line + "\n"
+
+# undo spinning cursor once loaded
+document.body.style.cursor = "default"
